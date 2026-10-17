@@ -1,0 +1,6 @@
+// Copie para src/functions/<pasta>/<nome>.js e reexporte em src/functions/index.js
+async function minhaFuncao(interaction, client) {
+  // sua lógica aqui
+}
+
+module.exports = { minhaFuncao };

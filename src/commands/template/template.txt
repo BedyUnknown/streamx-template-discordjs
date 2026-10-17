@@ -1,0 +1,25 @@
+// Copie para src/commands/<pasta>/<nome>.js (subpastas são lidas automaticamente).
+const {
+  ApplicationIntegrationType,
+  InteractionContextType,
+  SlashCommandBuilder,
+} = require('discord.js');
+const { minhaFuncao } = require('../../functions/index');
+
+module.exports = {
+  data: new SlashCommandBuilder()
+    .setName('nome')
+    .setDescription('descrição')
+    // Onde o comando aparece: Guild (servidores), BotDM (DM com o bot), PrivateChannel (DMs/grupos).
+    .setContexts(InteractionContextType.Guild)
+    // Como o app foi instalado: GuildInstall (servidor) ou UserInstall (conta do usuário).
+    .setIntegrationTypes(ApplicationIntegrationType.GuildInstall),
+  // Restringir por permissão: .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild)
+
+  async execute(interaction, client) {
+    await minhaFuncao(interaction, client);
+  },
+
+  // Opcional: só necessário se alguma opção usar .setAutocomplete(true)
+  // async autocomplete(interaction, client) {},
+};
